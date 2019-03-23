@@ -10,7 +10,7 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-samples = 30
+samples = 20
 left_border = 0.01
 right_border = 3
 delta = (right_border - left_border) / samples
@@ -39,8 +39,6 @@ f_values = np.zeros(np.shape(x_values))
 
 for i in range(samples):
     f_values[i] = f(x_values[i])
-    
-plt.plot(x_values, f_values)
 
 
 # In[3]:
