@@ -45,10 +45,12 @@ def separate_roots(interval, f, new_samples):
     x_values = np.linspace(left_border, right_border, samples)
     f_values = calc_f_values(x_values, f)
     intervals = np.empty((1, 2))
+    init = False
     for i in range(samples - 1):
-        if (f_values[i + 1] * f_values[i] < 0):
-            if (intervals.shape[0] == 1):
+        if f_values[i + 1] * f_values[i] < 0:
+            if not init:
                 intervals[0] = [x_values[i], x_values[i + 1]]
+                init = True
             else:
                 intervals = np.vstack((intervals, [x_values[i], x_values[i + 1]]))
     return intervals
