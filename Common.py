@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 #Plot the function
 
 import math
@@ -30,18 +27,11 @@ def phi(x):
 def phi_prime(x):
     return -phi(x) * math.log(x) / x
 
-
-# In[2]:
-
 def calc_f_values(x_values, f):
     f_values = np.zeros(np.shape(x_values))
     for i in range(samples):
         f_values[i] = f(x_values[i])
     return f_values
-
-
-# In[3]:
-
 
 #Root separation
 
@@ -58,13 +48,12 @@ def separate_roots(interval, f, new_samples):
     for i in range(samples - 1):
         if (f_values[i + 1] * f_values[i] < 0):
             if (intervals.shape[0] == 1):
-                intervals = np.array([x_values[i], x_values[i + 1]])
+                intervals[0] = [x_values[i], x_values[i + 1]]
             else:
                 intervals = np.vstack((intervals, [x_values[i], x_values[i + 1]]))
     return intervals
 
-def dichotomy(init_intervals):
-    
+def dichotomy(f, init_intervals):
     def dichotomy_single_root(interval):
         if (interval[1] - interval[0] < delta):
             return interval
@@ -79,3 +68,7 @@ def dichotomy(init_intervals):
     for i in range(len(init_intervals)):
         init_intervals[i] = dichotomy_single_root(init_intervals[i])
     return init_intervals
+
+def get_intervals_table(left, right, f, samples):
+    intervals = separate_roots((left, right), f, samples)
+    return intervals
