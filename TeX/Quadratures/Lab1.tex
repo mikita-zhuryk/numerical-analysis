@@ -1,0 +1,118 @@
+\documentclass[14pt, a4paper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=2cm, left=2.5cm, right=2cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{fancyhdr}
+\usepackage{fixltx2e}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{relsize}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english, russian]{babel}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\DeclareMathSizes{14}{24}{18}{12}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
+\title {Лабораторная работа №1 \\ Решение нелинейного уравнения методом простой итерации}
+\author {Журик Никита, 6 группа}
+\date {26.03.2019}
+
+
+\begin{document}
+\pagenumbering{gobble}
+\begin{titlepage}
+\begin{center}
+\large{БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ 
+
+ФАКУЛЬТЕТ ПРИКЛАДНОЙ МАТЕМАТИКИ И ИНФОРМАТИКИ
+
+КАФЕДРА ВЫЧИСЛИТЕЛЬНОЙ МАТЕМАТИКИ}
+\end{center}
+\vspace*{\fill}
+\begin{center}
+Лабораторная работа 1
+
+\large{\textbf{Применение интерполяционных квадратурных формул для вычисления определённых интегралов.}}
+
+Вариант 5
+\end{center}
+\begin{flushright}
+\textbf{Выполнил:}
+
+Журик Никита Сергеевич \\ 2 курс, 6 группа
+
+\textbf{Преподаватель:}
+
+Будник Анатолий Михайлович
+\end{flushright}
+\vspace*{\fill}
+\begin{center}
+Минск, 2019
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\newpage
+\pagenumbering{arabic}
+
+  \section{Постановка задачи}
+    \begin{enumerate}
+      \item
+	При помощи правила Рунге вычислить интеграл и определить шаг, необходимый для достижения требуемой точности;
+	\item
+	Пользуясь формулами для оценки погрешности КФ средних прямоугольников и Симпсона определить необходимые шаги $h_r, h_S$ для достижения требуемой точности;
+	\item
+	Применить НАСТ Гаусса и оценить погрешность интегрирования;
+	\item
+	Сравнить полученные результаты.
+    \end{enumerate}
+  \section{Задание 1.}
+  \begin{itemize}
+	\item
+	Для вычисления интеграла с требуемой точностью воспользуемся следующим критерием остановки итерационного процесса: $$R(f) = \frac{|I_{h_1}-I_{h_2}|}{1-\left(\frac{h_2}{h_1}\right)^2} \leq \epsilon$$
+	На каждой итерации будем уменьшать шаги в два раза до достижения требуемой точности. Тогда искомый шаг - $h_2$ на последней итерации.
+	Для улучшения точности положим $$I(f) \approx I_{h_2} + R(f)$$
+  \end{itemize}
+  \section{Листинг программы}
+  Для реализации алгоритма был использован Python и библиотеки numpy и scipy.
+
+\begin{lstlisting}
+
+\end{lstlisting}
+
+  \section{Вывод программы}
+\begin{verbatim}
+\end{verbatim}
+
+  \section{Выводы}
+
+\end{document}
